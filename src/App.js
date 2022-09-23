@@ -1,23 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
+import { Routes, Route } from "react-router-dom";
+import Chat from "./components/chat/chat";
+import Nav from "./components/nav/Nav";
+import Home from "./Home";
+import Messanger from "./Messanger";
+import { useState } from "react";
 function App() {
+  let baseURL = "http://127.0.0.1:8000/";
+  let app_key =
+    "?store_id=1&website=3fca26bf0e1d0898135f2d3ccb4c987a&api_key=d0ffee856e7ac3aa17e29172487ab16d";
+  let website = "3fca26bf0e1d0898135f2d3ccb4c987a";
+  let api_key = "d0ffee856e7ac3aa17e29172487ab16d";
+  const [id, setId] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{ width: "100%" }}>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              baseURL={baseURL}
+              api_key={api_key}
+              website={website}
+              app_key={app_key}
+            />
+          }
+        />
+        <Route
+          path="/messages"
+          element={
+            <Messanger
+              baseURL={baseURL}
+              api_key={api_key}
+              website={website}
+              app_key={app_key}
+            />
+          }
+        />
+      </Routes>
     </div>
   );
 }

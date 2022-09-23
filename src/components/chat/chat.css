@@ -1,0 +1,97 @@
+.chat-app {
+    text-align: center;
+    position: absolute;
+      right: 10%;
+      top: 2%;
+  }
+  .chatList{
+    position: absolute;
+    right: 10%;
+    top: 6%;
+    
+    width: 20%;
+    border-radius: 8px;
+    margin-top: 0.5%;
+    border: 1px solid lightgray;
+  }
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  .search-input input[name='input-search']:focus{
+    border: none;
+    outline: none;
+  }
+  .search-input{
+    box-sizing: border-box;
+      padding: 9px;
+      background: #dedbdb;
+      position: relative;
+      border-radius: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  .chat{
+    display: flex;
+    padding: 4% 3% 0;
+  }
+  .chat:hover{
+    background-color: #efeeee;
+    cursor: pointer;
+  }
+  .search-input img{
+    height: 20px;
+    width: 20px;
+  }
+  .chat img{
+    width:50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  .chat{
+    display: flex;
+  }
+  .chat-Detail{
+    width:100%;
+    margin-left: 3%;
+  }
+  
+  .chat-Detail-name{
+    display: flex;
+    font-size: 20px;
+    justify-content: space-between;
+  }
+  .chat-Detail-message
+  {margin-top: 1%;
+    color: #444444;}
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  

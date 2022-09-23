@@ -1,0 +1,40 @@
+.ModalOverlay{
+    height: 100vh;
+    z-index: 11;
+    background: #363636;
+    transition: opacity .3s ease-in-out,visibility .3s ease om-in-out;
+    transition-property: opacity, visibility;
+    transition-duration: 0.3s, 0.3s;
+    transition-timing-function: ease-in-out, ease-in-out;
+    transition-delay: 0s, 0s;
+    opacity: .5;
+    visibility: visible;
+    top: 0;
+      position: fixed;
+      left: 0;
+      width: 500vh;
+  }
+  .Modal{
+    background: #fff;
+    padding: 1.2%;
+    overflow-y: hidden;
+    
+    width: 26%;
+    border-radius: 20px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    height: auto;
+    max-height: 1200px;
+    position: absolute;
+    z-index: 12;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 2%;
+    border-bottom: 1px solid #ebe7fb;
+  }
