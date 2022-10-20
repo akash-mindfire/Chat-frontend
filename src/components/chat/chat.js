@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./chat.css";
 
 import ChatList from "./ChatList";
@@ -19,41 +19,23 @@ class Chat extends React.Component {
     let ddEle = document.getElementById("chatList-container");
     let img = document.getElementById("msg-logo");
     if (
-      this.state.showBox &&
+      this.props.showBox &&
       !ddEle.contains(event.target) &&
       !img.contains(event.target)
     ) {
-      this.setState({ showBox: false });
+      console.log("check");
+      this.props.closeShowBox();
     }
   };
-  handleClick = async (e) => {
-    this.setState({ showBox: !this.state.showBox });
-    if (!this.state.showBox) {
-      let { baseURL, api_key, website, app_key } = this.props;
 
-      await fetch(`${baseURL}getChatUsersLists${app_key}&customer_id=2`)
-        .then((res) => res.json())
-        .then(
-          (result) => {
-            this.setState({
-              chatList: result.chatUsersLists,
-            });
-            this.props.handleId();
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-    }
-  };
   render() {
-    let { showBox } = this.state;
+    let { handleSelectedUser, showBox, chatList } = this.props;
     return (
       <div>
         <div className="chat-app">
           <div
             style={{ cursor: "pointer", width: "30px" }}
-            onClick={(e) => this.handleClick(e)}
+            onClick={(e) => this.props.handleClick(e)}
             id="msg-logo"
           >
             <svg
@@ -69,7 +51,10 @@ class Chat extends React.Component {
         </div>
         {showBox && (
           <div className="chatList-container" id="chatList-container">
-            <ChatList chatList={this.state.chatList} />
+            <ChatList
+              chatList={chatList}
+              handleSelectedUser={handleSelectedUser}
+            />
           </div>
         )}
       </div>

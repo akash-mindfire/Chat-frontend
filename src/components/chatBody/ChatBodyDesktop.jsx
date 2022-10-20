@@ -4,7 +4,7 @@ import ChatList from "../chatList/ChatList";
 import ChatContent from "../chatContent/ChatContent";
 import TemplateModal from "../TemplateModal/template";
 
-export default class ChatBody extends Component {
+export default class ChatBodyDesktop extends Component {
   state = {
     showTemplateModal: false,
     selectedTemplate: {},
@@ -54,30 +54,28 @@ export default class ChatBody extends Component {
             handleselectedTemplate={this.handleselectedTemplate}
           />
         )}
-        {id == "" && (
-          <ChatList
-            baseURL={baseURL}
-            api_key={api_key}
-            website={website}
-            app_key={app_key}
-            handleSelectedUser={this.handleSelectedUserChat}
-          />
-        )}
-        {id && (
-          <ChatContent
-            baseURL={baseURL}
-            api_key={api_key}
-            website={website}
-            app_key={app_key}
-            handleSelectedUser={handleSelectedUser}
-            name={name}
-            id={id}
-            mobile={mobile}
-            handleClickTemplate={this.handleClickTemplate}
-            selectedTemplate={selectedTemplate}
-            handleBackClick={handleBackClick}
-          />
-        )}
+
+        <ChatList
+          baseURL={baseURL}
+          api_key={api_key}
+          website={website}
+          app_key={app_key}
+          handleSelectedUser={this.handleSelectedUserChat}
+        />
+
+        <ChatContent
+          baseURL={baseURL}
+          api_key={api_key}
+          website={website}
+          app_key={app_key}
+          handleSelectedUser={handleSelectedUser}
+          name={name}
+          id={id}
+          mobile={mobile}
+          handleClickTemplate={this.handleClickTemplate}
+          selectedTemplate={selectedTemplate}
+          handleBackClick={handleBackClick}
+        />
       </div>
     );
   }

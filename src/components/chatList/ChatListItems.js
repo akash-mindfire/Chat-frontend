@@ -7,8 +7,9 @@ export default class ChatListItems extends Component {
   }
   selectChat = (e, id, name) => {
     e.preventDefault();
-    sessionStorage.setItem("id", id);
-    sessionStorage.setItem("name", name);
+    this.props.handleSelectedUser(id, name);
+    // sessionStorage.setItem("id", id);
+    // sessionStorage.setItem("name", name);
 
     for (
       let index = 0;
@@ -84,9 +85,15 @@ export default class ChatListItems extends Component {
         <div className="userMeta" style={{ width: "100%" }}>
           <p>{this.props.name}</p>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <p>{this.props.lastMessage}</p>
+            <p>
+              {this.props.lastMessage.length > 20
+                ? this.props.lastMessage.substring(0, 15) + "..."
+                : this.props.lastMessage}
+            </p>
             <span className="activeTime">
-              {this.handleDateFormat(this.props.time)}
+              {window.innerWidth < 991
+                ? this.handleDateFormat(this.props.time).substring(0, 13)
+                : this.handleDateFormat(this.props.time)}
             </span>
           </div>
         </div>

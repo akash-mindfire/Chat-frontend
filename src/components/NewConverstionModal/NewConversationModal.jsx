@@ -13,7 +13,6 @@ class NewConversationModal extends React.Component {
       .then((res) => res.json())
       .then(
         (result) => {
-          console.log(result);
           this.setState({
             customer_List: result.newChatUsersLists,
           });
@@ -23,15 +22,15 @@ class NewConversationModal extends React.Component {
         }
       );
   }
-  selectChat = (e, id, name) => {
+  selectChat = (e, id, name, mobile) => {
     e.preventDefault();
-    sessionStorage.setItem("id", id);
-    sessionStorage.setItem("name", name);
+    this.props.handleSelectedUser(id, name, mobile);
+    // sessionStorage.setItem("id", id);
+    // sessionStorage.setItem("name", name);
     this.props.close(e);
   };
   handleSearchName = async (e) => {
     e.preventDefault();
-    console.log(e.target.value);
     let { baseURL, api_key, website, app_key } = this.props;
     await fetch(
       `${baseURL}getUsersListsForNewChat${app_key}&store_id=1&search=${e.target.value}`
@@ -39,7 +38,6 @@ class NewConversationModal extends React.Component {
       .then((res) => res.json())
       .then(
         (result) => {
-          console.log(result);
           this.setState({
             customer_List: result.newChatUsersLists,
           });
@@ -92,7 +90,11 @@ class NewConversationModal extends React.Component {
             </div>
             <div
               className="chatName-container"
-              style={{ height: "550px", overflowY: "auto", marginTop: "3%" }}
+              style={
+                window.innerWidth < 640
+                  ? { height: "500px", overflowY: "auto", marginTop: "2%" }
+                  : { height: "550px", overflowY: "auto", marginTop: "3%" }
+              }
             >
               {customer_List.map((n) => {
                 return (
@@ -103,7 +105,12 @@ class NewConversationModal extends React.Component {
                       animationDelay: `0.${this.props.animationDelay}s`,
                     }}
                     onClick={(e) =>
-                      this.selectChat(e, n.customer_id, n.customer_name)
+                      this.selectChat(
+                        e,
+                        n.customer_id,
+                        n.customer_name,
+                        n.mobile
+                      )
                     }
                     className={`chatlist__item ${
                       this.props.active ? this.props.active : ""

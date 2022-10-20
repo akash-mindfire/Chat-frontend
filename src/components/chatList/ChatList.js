@@ -34,12 +34,10 @@ export default class ChatList extends Component {
   };
   close = (e) => {
     e.preventDefault();
-    console.log(e);
     this.setState({ showNewConversationModal: false });
   };
   handleSearchName = async (e) => {
     e.preventDefault();
-    console.log(e);
     let { baseURL, api_key, website, app_key } = this.props;
     await fetch(
       `${baseURL}getChatUsersLists${app_key}&customer_id=2&search=${e.target.value}`
@@ -58,7 +56,7 @@ export default class ChatList extends Component {
   };
   render() {
     let { showNewConversationModal } = this.state;
-    let { baseURL, api_key, website, app_key } = this.props;
+    let { baseURL, api_key, website, app_key, handleSelectedUser } = this.props;
     return (
       <>
         {showNewConversationModal && (
@@ -68,6 +66,7 @@ export default class ChatList extends Component {
             api_key={api_key}
             website={website}
             app_key={app_key}
+            handleSelectedUser={handleSelectedUser}
           />
         )}
         <div className="main__chatlist">
@@ -101,10 +100,11 @@ export default class ChatList extends Component {
                   name={item.user_details.customer_name}
                   key={item.id}
                   animationDelay={index + 1}
-                  image="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU"
+                  image="https://i.pinimg.com/222x/7d/1a/3f/7d1a3f77eee9f34782c6f88e97a6c888.jpg"
                   lastMessage={item.last_message}
                   time={item.updated_at}
                   customer_id={item.customer_id}
+                  handleSelectedUser={handleSelectedUser}
                 />
               );
             })}

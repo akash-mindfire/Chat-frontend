@@ -13,7 +13,19 @@ function App() {
   let website = "3fca26bf0e1d0898135f2d3ccb4c987a";
   let api_key = "d0ffee856e7ac3aa17e29172487ab16d";
   const [id, setId] = useState("");
-
+  const [name, setName] = useState("");
+  const [mobile, setMobile] = useState("");
+  const handleSelectedUser = (id, name, mobile) => {
+    sessionStorage.setItem("id", id);
+    sessionStorage.setItem("name", name);
+    setId(id);
+    setName(name);
+    setMobile(mobile);
+  };
+  const handleBackClick = () => {
+    setId("");
+    setName("");
+  };
   return (
     <div className="App" style={{ width: "100%" }}>
       <Routes>
@@ -25,6 +37,7 @@ function App() {
               api_key={api_key}
               website={website}
               app_key={app_key}
+              handleSelectedUser={handleSelectedUser}
             />
           }
         />
@@ -36,6 +49,11 @@ function App() {
               api_key={api_key}
               website={website}
               app_key={app_key}
+              handleSelectedUser={handleSelectedUser}
+              name={name}
+              id={id}
+              mobile={mobile}
+              handleBackClick={handleBackClick}
             />
           }
         />

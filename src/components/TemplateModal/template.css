@@ -1,0 +1,69 @@
+.ModalOverlay{
+    height: 100vh;
+    z-index: 11;
+    background: #363636;
+    transition: opacity .3s ease-in-out,visibility .3s ease om-in-out;
+    transition-property: opacity, visibility;
+    transition-duration: 0.3s, 0.3s;
+    transition-timing-function: ease-in-out, ease-in-out;
+    transition-delay: 0s, 0s;
+    opacity: .5;
+    visibility: visible;
+    top: 0;
+      position: fixed;
+      left: 0;
+      width: 500vh;
+  }
+  .Modal{
+    background: #fff;
+    padding: 1.2%;
+    overflow-y: hidden;
+    
+    width: 26%;
+    border-radius: 20px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    height: auto;
+    max-height: 1200px;
+    position: absolute;
+    z-index: 12;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 2%;
+    border-bottom: 1px solid #ebe7fb;
+  }
+  input[name="template"] {
+	accent-color: #000;
+}
+.template_footer{
+    border-top: 1px solid #ebe7fb;
+    padding: 5% 0 0;
+    display: flex;
+    justify-content: end;
+}
+.btn-template-modal{
+    padding: 3% 10%;
+    background: black;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 800;
+    border-radius: 8px;
+}
+@media screen and (min-width:641px) and (max-width:991px){
+  .Modal{
+    padding: 2.2%;
+    width: 50%;
+  }
+}
+@media screen and (max-width:640px){
+  .Modal{
+    padding: 4%;
+    width: 85%;
+  }
+}

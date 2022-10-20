@@ -59,7 +59,31 @@ body {
   align-items: center;
   font-size: 17px;
 }
+@media screen and (max-width:640px){
+  .__main{
+    padding:0;
+    max-width: 100%;
+  }
+  .btn{
+    background-color:#000 ;
+    color: #fff;
+  }
 
+}
+@media screen and (min-width:641px) and (max-width:991px){
+  .__main{
+    width: 95%;
+    max-width: 95%;
+  }
+  .btn i{
+    flex: 0.15 1;
+    font-size: 20px;
+  }
+  .btn span{
+    flex: 0.8 1;
+    font-size: 15px;
+  }
+}
 /* width */
 ::-webkit-scrollbar {
   width: 5px;

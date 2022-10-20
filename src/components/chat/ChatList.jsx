@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-const ChatList = ({ chatList }) => {
+const ChatList = ({ chatList, handleSelectedUser }) => {
   const [list, setList] = useState([]);
   const navigate = useNavigate();
   let selectChat = (e, id, name) => {
     e.preventDefault();
-    sessionStorage.setItem("id", id);
-    sessionStorage.setItem("name", name);
+    handleSelectedUser(id, name);
     navigate("messages");
   };
   let handleDateFormat = (formatDate) => {
@@ -19,10 +18,10 @@ const ChatList = ({ chatList }) => {
       "Mar",
       "Apr",
       "May",
-      "June",
-      "July",
+      "Jun",
+      "Jul",
       "Aug",
-      "Sept",
+      "Sep",
       "Oct",
       "Nov",
       "Dec",
@@ -85,7 +84,12 @@ const ChatList = ({ chatList }) => {
             <div
               className="chat"
               onClick={(e) =>
-                selectChat(e, n.customer_id, n.user_details.customer_name)
+                selectChat(
+                  e,
+                  n.customer_id,
+                  n.user_details.customer_name,
+                  n.customer_mobile
+                )
               }
             >
               <div>
@@ -97,14 +101,16 @@ const ChatList = ({ chatList }) => {
                     {n.user_details.customer_name}
                   </span>
                   <span style={{ color: "#a9a9a9", fontSize: "13px" }}>
-                    {handleDateFormat(n.updated_at)}
+                    {handleDateFormat(n.updated_at).substring(0, 12)}
                   </span>
                 </div>
                 <div
                   className="chat-detail-message"
                   style={{ display: "flex" }}
                 >
-                  {n.last_message}
+                  {n.last_message.length > 35
+                    ? n.last_message.substring(0, 35) + "..."
+                    : n.last_message}
                 </div>
               </div>
             </div>
