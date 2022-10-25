@@ -102,8 +102,9 @@ export default class ChatList extends Component {
                   animationDelay={index + 1}
                   image="https://i.pinimg.com/222x/7d/1a/3f/7d1a3f77eee9f34782c6f88e97a6c888.jpg"
                   lastMessage={item.last_message}
-                  time={item.updated_at}
+                  time={item.created_at}
                   customer_id={item.customer_id}
+                  mobile={item.customer_mobile}
                   handleSelectedUser={handleSelectedUser}
                 />
               );

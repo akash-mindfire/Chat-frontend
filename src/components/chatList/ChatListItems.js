@@ -5,9 +5,9 @@ export default class ChatListItems extends Component {
   constructor(props) {
     super(props);
   }
-  selectChat = (e, id, name) => {
+  selectChat = (e, id, name, mobile) => {
     e.preventDefault();
-    this.props.handleSelectedUser(id, name);
+    this.props.handleSelectedUser(id, name, mobile);
     // sessionStorage.setItem("id", id);
     // sessionStorage.setItem("name", name);
 
@@ -70,7 +70,12 @@ export default class ChatListItems extends Component {
       <div
         style={{ animationDelay: `0.${this.props.animationDelay}s` }}
         onClick={(e) =>
-          this.selectChat(e, this.props.customer_id, this.props.name)
+          this.selectChat(
+            e,
+            this.props.customer_id,
+            this.props.name,
+            this.props.mobile
+          )
         }
         className={`chatlist__item ${
           this.props.active ? this.props.active : ""

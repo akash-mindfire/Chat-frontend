@@ -224,7 +224,7 @@ export default class ChatContent extends Component {
                   user={itm.sender}
                   msg={itm.message}
                   image={img}
-                  time={itm.updated_at}
+                  time={itm.created_at}
                 />
               );
             })}

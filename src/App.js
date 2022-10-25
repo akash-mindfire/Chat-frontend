@@ -20,6 +20,7 @@ function App() {
     sessionStorage.setItem("name", name);
     setId(id);
     setName(name);
+    console.log(mobile);
     setMobile(mobile);
   };
   const handleBackClick = () => {
